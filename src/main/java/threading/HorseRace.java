@@ -29,8 +29,7 @@ public class HorseRace {
                                     // each thread will get a chance to start at the same time
                                     barrier.await();
                                     System.out.println("Horse[%d] started!".formatted(i));
-                                    // sleep induced to make all threads to start,
-                                    // (before) so main gets a chance to invoke join!
+                                    // sleep induced so that main gets a chance to invoke join!
                                     Thread.sleep(new Random().nextLong(1000));
                                     System.out.println("Horse[%d] finished at position %d"
                                             .formatted(i, position.incrementAndGet()));
