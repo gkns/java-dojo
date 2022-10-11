@@ -34,9 +34,7 @@ public class HorseRace {
                                     Thread.sleep(new Random().nextLong(1000));
                                     System.out.println("Horse[%d] finished at position %d"
                                             .formatted(i, position.incrementAndGet()));
-                                } catch (InterruptedException e) {
-                                    throw new RuntimeException(e);
-                                } catch (BrokenBarrierException e) {
+                                } catch (InterruptedException | BrokenBarrierException e) {
                                     throw new RuntimeException(e);
                                 }
                             });
@@ -45,8 +43,14 @@ public class HorseRace {
         for (Thread horse : horses) {
             horse.start();
         }
+        Thread.sleep(1000);
+        System.out.println("All horses must be ready by now. Opening the gate in 3,2,1...");
+
+        Thread.sleep(3000);
+        System.out.println("Go!");
         // Open the gates.
         barrier.await();
+
 
         // Wait for all horses to finish!
         for (Thread horse : horses) {
