@@ -50,7 +50,6 @@ public class HorseRace {
         // Open the gates.
         barrier.await();
 
-
         // Wait for all horses to finish!
         for (Thread horse : horses) {
             horse.join();
