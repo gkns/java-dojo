@@ -25,6 +25,8 @@ public class HorseRace {
                         i -> {
                             return new Thread(() -> {
                                 try {
+                                    // This barrier is tripped in main, so that
+                                    // each thread will get a chance to start at the same time
                                     barrier.await();
                                     System.out.println("Horse[%d] started!".formatted(i));
                                     // sleep induced to make all threads to start,
